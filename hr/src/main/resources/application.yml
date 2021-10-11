@@ -1,0 +1,10 @@
+hr:
+    employee:
+        raise:
+            def: 0
+            max: 10
+            mid: 5
+            min: 2
+spring:
+    profiles:
+        active: smarty
