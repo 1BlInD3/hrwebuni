@@ -6,8 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 @SpringBootApplication
 public class HrApplication implements CommandLineRunner {
@@ -18,17 +22,22 @@ public class HrApplication implements CommandLineRunner {
 
 	@Autowired
 	SalaryService salaryService;
-	Employee employee = new Employee(123456,"Vladimir Goncar","fazekas",10000,LocalDateTime.of(2002, Month.JANUARY,1,19,30,40));
-	Employee employee1 = new Employee(1234567,"Leslie Potter","fazekas",10000,LocalDateTime.of(2015, Month.JANUARY,1,19,30,40));
-	Employee employee2 = new Employee(12345678,"Ladislao Vasaio","fazekas",10000,LocalDateTime.of(2018, Month.DECEMBER,1,19,30,40));
-	Employee employee3 = new Employee(123456789,"Ladislas Pottier","fazekas",10000,LocalDateTime.of(2021, Month.JANUARY,1,19,30,40));
+	Employee employee = new Employee(123456,"Vladimir Goncar","fazekas",10000,LocalDate.of(2002,5,3));
+	Employee employee1 = new Employee(1234567,"Leslie Potter","fazekas",10000,LocalDate.of(2015,5,3));
+	Employee employee2 = new Employee(12345678,"Ladislao Vasaio","fazekas",10000,LocalDate.of(2018,12,3));
+	Employee employee3 = new Employee(123456789,"Ladislas Pottier","fazekas",10000,LocalDate.of(2021,5,3));
+
 
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println(salaryService.getSalaryRaise(employee));
+		System.out.println(DAYS.between(employee.getEntryDate(),LocalDate.now())/365.0);
 		System.out.println(salaryService.getSalaryRaise(employee1));
+		System.out.println(DAYS.between(employee1.getEntryDate(),LocalDate.now())/365.0);
 		System.out.println(salaryService.getSalaryRaise(employee2));
+		System.out.println(DAYS.between(employee2.getEntryDate(),LocalDate.now())/365.0);
 		System.out.println(salaryService.getSalaryRaise(employee3));
+		System.out.println(DAYS.between(employee3.getEntryDate(),LocalDate.now())/365.0);
 	}
 	/*
 	* Ha megadom beanként mind a 2 EmployeeService-t akkor kéri, hogy adjam meg melyik service fusson. A hibakóddal kilép

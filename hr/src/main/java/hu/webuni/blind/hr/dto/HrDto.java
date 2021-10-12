@@ -1,19 +1,16 @@
-package hu.webuni.blind.hr.model;
+package hu.webuni.blind.hr.dto;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Employee {
+public class HrDto {
     private long id;
     private String name;
     private String position;
     private int wage;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate entryDate;
+    private LocalDateTime entryDate;
 
-    public Employee(long id, String name, String position, int wage, LocalDate entryDate) {
+    public HrDto(long id, String name, String position, int wage, LocalDateTime entryDate) {
         this.id = id;
         this.name = name;
         this.position = position;
@@ -21,7 +18,7 @@ public class Employee {
         this.entryDate = entryDate;
     }
 
-    public Employee() {
+    public HrDto() {
     }
 
     public long getId() {
@@ -56,11 +53,11 @@ public class Employee {
         this.wage = wage;
     }
 
-    public LocalDate getEntryDate() {
+    public LocalDateTime getEntryDate() {
         return entryDate;
     }
 
-    public void setEntryDate(LocalDate entryDate) {
+    public void setEntryDate(LocalDateTime entryDate) {
         this.entryDate = entryDate;
     }
 }

@@ -5,7 +5,11 @@ import hu.webuni.blind.hr.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.time.LocalDateTime;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 @Service
 
@@ -18,7 +22,8 @@ public class SmartEmployeeService implements EmployeeService {
     public int getPayRaisePercent(Employee employee) {
         EmployeeConfigProperties.Years years = employeeConfigProperties.getEmployee().getYears();
         EmployeeConfigProperties.Raise raise = employeeConfigProperties.getEmployee().getRaise();
-        double spentYears = Duration.between(employee.getEntryDate(),LocalDateTime.now()).toDays()/365.0;
+        //double spentYears = Duration.between(employee.getEntryDate(), LocalDate.now()).toDays()/365.0;
+        double spentYears = DAYS.between(employee.getEntryDate(),LocalDate.now())/365.0;
         if (spentYears > years.getMax()) {
             return raise.getMax();
         } else if (spentYears >= years.getMid()) {
