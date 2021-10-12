@@ -1,16 +1,15 @@
 package hu.webuni.blind.hr.dto;
 
+import java.time.LocalDate;
 
-import java.time.LocalDateTime;
-
-public class HrDto {
+public class EmployeeDto {
     private long id;
     private String name;
     private String position;
     private int wage;
-    private LocalDateTime entryDate;
+    private LocalDate entryDate;
 
-    public HrDto(long id, String name, String position, int wage, LocalDateTime entryDate) {
+    public EmployeeDto(long id, String name, String position, int wage, LocalDate entryDate) {
         this.id = id;
         this.name = name;
         this.position = position;
@@ -18,7 +17,7 @@ public class HrDto {
         this.entryDate = entryDate;
     }
 
-    public HrDto() {
+    public EmployeeDto() {
     }
 
     public long getId() {
@@ -53,11 +52,11 @@ public class HrDto {
         this.wage = wage;
     }
 
-    public LocalDateTime getEntryDate() {
+    public LocalDate getEntryDate() {
         return entryDate;
     }
 
-    public void setEntryDate(LocalDateTime entryDate) {
+    public void setEntryDate(LocalDate entryDate) {
         this.entryDate = entryDate;
     }
 }
