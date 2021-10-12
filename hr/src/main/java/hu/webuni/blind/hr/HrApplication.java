@@ -8,10 +8,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Month;
-
-import static java.time.temporal.ChronoUnit.DAYS;
 
 @SpringBootApplication
 public class HrApplication implements CommandLineRunner {
@@ -31,18 +27,11 @@ public class HrApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println(salaryService.getSalaryRaise(employee));
-		System.out.println(DAYS.between(employee.getEntryDate(),LocalDate.now())/365.0);
 		System.out.println(salaryService.getSalaryRaise(employee1));
-		System.out.println(DAYS.between(employee1.getEntryDate(),LocalDate.now())/365.0);
 		System.out.println(salaryService.getSalaryRaise(employee2));
-		System.out.println(DAYS.between(employee2.getEntryDate(),LocalDate.now())/365.0);
 		System.out.println(salaryService.getSalaryRaise(employee3));
-		System.out.println(DAYS.between(employee3.getEntryDate(),LocalDate.now())/365.0);
 	}
 	/*
 	* Ha megadom beanként mind a 2 EmployeeService-t akkor kéri, hogy adjam meg melyik service fusson. A hibakóddal kilép
-	*
-	*  if ((LocalDateTime.now().getYear() - employee.getEntryDate().getYear()) > years.getMax()) {
-	*
 	* */
 }
